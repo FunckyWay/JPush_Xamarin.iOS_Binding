@@ -509,4 +509,24 @@ namespace JPush
         [Export("jpushNotificationCenter:openSettingsForNotification:")]
         void OpenSettingsForNotification(UNUserNotificationCenter center, [NullAllowed] UNNotification notification);
     }
+
+    // @interface JPushNotificationExtensionService : NSObject
+    [BaseType(typeof(NSObject))]
+    interface JPushNotificationExtensionService
+    {
+        // +(void)jpushSetAppkey:(NSString *)appkey;
+        [Static]
+        [Export("jpushSetAppkey:")]
+        void JpushSetAppkey(string appkey);
+
+        // +(void)jpushReceiveNotificationRequest:(UNNotificationRequest *)request with:(void (^)(void))completion;
+        [Static]
+        [Export("jpushReceiveNotificationRequest:with:")]
+        void JpushReceiveNotificationRequest(UNNotificationRequest request, Action completion);
+
+        // +(void)setLogOff;
+        [Static]
+        [Export("setLogOff")]
+        void SetLogOff();
+    }
 }
