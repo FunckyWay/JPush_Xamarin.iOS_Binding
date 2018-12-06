@@ -41,15 +41,16 @@
     <ObjcBindingCoreSource Include="Structs.cs" />
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="..\..\..\Desktop\Binding\JPush\Pods\JPush\libjpush-ios-3.0.8.a">
+    <NativeReference Include="jcore-ios-1.2.5.a">
       <Kind>Static</Kind>
       <ForceLoad>True</ForceLoad>
       <Frameworks>CFNetwork CoreFoundation CoreTelephony SystemConfiguration CoreGraphics Foundation UIKit Security UserNotifications</Frameworks>
       <LinkerFlags>-lz -lresolv</LinkerFlags>
     </NativeReference>
-    <NativeReference Include="..\..\..\Desktop\Binding\JPush\Pods\JCore\libjcore-ios-1.1.7.a">
+    <NativeReference Include="jpush-ios-3.1.1.a">
       <Kind>Static</Kind>
-      <SmartLink>False</SmartLink>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
     </NativeReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
