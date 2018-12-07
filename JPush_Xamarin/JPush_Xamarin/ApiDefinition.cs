@@ -19,34 +19,58 @@ namespace JPush
     partial interface Constants
     {
         // extern NSString *const kJPFNetworkIsConnectingNotification;
+        /// <summary>
+        /// 正在连接中
+        /// </summary>
         [Field("kJPFNetworkIsConnectingNotification", "__Internal")]
         NSString kJPFNetworkIsConnectingNotification { get; }
 
         // extern NSString *const kJPFNetworkDidSetupNotification;
+        /// <summary>
+        /// 建立连接
+        /// </summary>
         [Field("kJPFNetworkDidSetupNotification", "__Internal")]
         NSString kJPFNetworkDidSetupNotification { get; }
 
         // extern NSString *const kJPFNetworkDidCloseNotification;
+        /// <summary>
+        /// 关闭连接
+        /// </summary>
         [Field("kJPFNetworkDidCloseNotification", "__Internal")]
         NSString kJPFNetworkDidCloseNotification { get; }
 
         // extern NSString *const kJPFNetworkDidRegisterNotification;
+        /// <summary>
+        /// 注册成功
+        /// </summary>
         [Field("kJPFNetworkDidRegisterNotification", "__Internal")]
         NSString kJPFNetworkDidRegisterNotification { get; }
 
         // extern NSString *const kJPFNetworkFailedRegisterNotification;
+        /// <summary>
+        /// 注册失败
+        /// </summary>
         [Field("kJPFNetworkFailedRegisterNotification", "__Internal")]
         NSString kJPFNetworkFailedRegisterNotification { get; }
 
         // extern NSString *const kJPFNetworkDidLoginNotification;
+        /// <summary>
+        /// 登录成功
+        /// </summary>
         [Field("kJPFNetworkDidLoginNotification", "__Internal")]
         NSString kJPFNetworkDidLoginNotification { get; }
 
         // extern NSString *const kJPFNetworkDidReceiveMessageNotification;
+        /// <summary>
+        /// 收到消息(非APNS)
+        /// </summary>
         [Field("kJPFNetworkDidReceiveMessageNotification", "__Internal")]
         NSString kJPFNetworkDidReceiveMessageNotification { get; }
 
         // extern NSString *const kJPFServiceErrorNotification;
+        /// <summary>
+        /// 错误提示
+        /// </summary>
         [Field("kJPFServiceErrorNotification", "__Internal")]
         NSString kJPFServiceErrorNotification { get; }
     }
@@ -88,6 +112,25 @@ namespace JPush
         Action<NSArray> FindCompletionHandler { get; set; }
     }
 
+    // @interface JPushNotificationSound : NSObject <NSCopying, NSCoding>
+    [BaseType(typeof(NSObject))]
+    interface JPushNotificationSound : INSCopying, INSCoding
+    {
+        // @property (copy, nonatomic) NSString * soundName;
+        [Export("soundName")]
+        string SoundName { get; set; }
+
+        // @property (copy, nonatomic) NSString * criticalSoundName __attribute__((availability(ios, introduced=12.0)));
+        [iOS(12, 0)]
+        [Export("criticalSoundName")]
+        string CriticalSoundName { get; set; }
+
+        // @property (assign, nonatomic) float criticalSoundVolume __attribute__((availability(ios, introduced=12.0)));
+        [iOS(12, 0)]
+        [Export("criticalSoundVolume")]
+        float CriticalSoundVolume { get; set; }
+    }
+
     // @interface JPushNotificationContent : NSObject <NSCopying, NSCoding>
     [BaseType(typeof(NSObject))]
     interface JPushNotificationContent : INSCopying, INSCoding
@@ -126,10 +169,14 @@ namespace JPush
         [Export("sound")]
         string Sound { get; set; }
 
+        // @property (copy, nonatomic) JPushNotificationSound * soundSetting __attribute__((availability(ios, introduced=10.0)));
+        [iOS(10, 0)]
+        [Export("soundSetting", ArgumentSemantic.Copy)]
+        JPushNotificationSound SoundSetting { get; set; }
+
         // @property (copy, nonatomic) NSArray * attachments __attribute__((availability(ios, introduced=10_0)));
         [iOS(10, 0)]
         [Export("attachments", ArgumentSemantic.Copy)]
-
         NSObject[] Attachments { get; set; }
 
         // @property (copy, nonatomic) NSString * threadIdentifier __attribute__((availability(ios, introduced=10_0)));
@@ -141,6 +188,16 @@ namespace JPush
         [iOS(10, 0)]
         [Export("launchImageName")]
         string LaunchImageName { get; set; }
+
+        // @property (copy, nonatomic) NSString * summaryArgument __attribute__((availability(ios, introduced=12.0)));
+        [iOS(12, 0)]
+        [Export("summaryArgument")]
+        string SummaryArgument { get; set; }
+
+        // @property (assign, nonatomic) NSUInteger summaryArgumentCount __attribute__((availability(ios, introduced=12.0)));
+        [iOS(12, 0)]
+        [Export("summaryArgumentCount")]
+        nuint SummaryArgumentCount { get; set; }
     }
 
     // @interface JPushNotificationTrigger : NSObject <NSCopying, NSCoding>
@@ -283,17 +340,17 @@ namespace JPush
         [Export("filterValidTags:")]
         NSSet FilterValidTags(NSSet tags);
 
-        // +(void)startLogPageView:(NSString *)pageName;
+        // +(void)startLogPageView:(NSString *)pageName __attribute__((deprecated("JCore 1.1.8 版本已过期")));
         [Static]
         [Export("startLogPageView:")]
         void StartLogPageView(string pageName);
 
-        // +(void)stopLogPageView:(NSString *)pageName;
+        // +(void)stopLogPageView:(NSString *)pageName __attribute__((deprecated("JCore 1.1.8 版本已过期")));
         [Static]
         [Export("stopLogPageView:")]
         void StopLogPageView(string pageName);
 
-        // +(void)beginLogPageView:(NSString *)pageName duration:(int)seconds;
+        // +(void)beginLogPageView:(NSString *)pageName duration:(int)seconds __attribute__((deprecated("JCore 1.1.8 版本已过期")));
         [Static]
         [Export("beginLogPageView:duration:")]
         void BeginLogPageView(string pageName, int seconds);
@@ -329,15 +386,15 @@ namespace JPush
         void FindNotification(JPushNotificationIdentifier identifier);
 
         // +(UILocalNotification *)setLocalNotification:(NSDate *)fireDate alertBody:(NSString *)alertBody badge:(int)badge alertAction:(NSString *)alertAction identifierKey:(NSString *)notificationKey userInfo:(NSDictionary *)userInfo soundName:(NSString *)soundName __attribute__((deprecated("JPush 2.1.9 版本已过期")));
-        //[Static]
-        //[Export("setLocalNotification:alertBody:badge:alertAction:identifierKey:userInfo:soundName:")]
-        //UILocalNotification SetLocalNotification(NSDate fireDate, string alertBody, int badge, string alertAction, string notificationKey, NSDictionary userInfo, string soundName);
+        [Static]
+        [Export("setLocalNotification:alertBody:badge:alertAction:identifierKey:userInfo:soundName:")]
+        UILocalNotification SetLocalNotification(NSDate fireDate, string alertBody, int badge, string alertAction, string notificationKey, NSDictionary userInfo, string soundName);
 
         // +(UILocalNotification *)setLocalNotification:(NSDate *)fireDate alertBody:(NSString *)alertBody badge:(int)badge alertAction:(NSString *)alertAction identifierKey:(NSString *)notificationKey userInfo:(NSDictionary *)userInfo soundName:(NSString *)soundName region:(CLRegion *)region regionTriggersOnce:(BOOL)regionTriggersOnce category:(NSString *)category __attribute__((deprecated("JPush 2.1.9 版本已过期"))) __attribute__((availability(ios, introduced=8_0)));
         //[iOS(8, 0)]
-        //[Static]
-        //[Export("setLocalNotification:alertBody:badge:alertAction:identifierKey:userInfo:soundName:region:regionTriggersOnce:category:")]
-        //UILocalNotification SetLocalNotification(NSDate fireDate, string alertBody, int badge, string alertAction, string notificationKey, NSDictionary userInfo, string soundName, CLRegion region, bool regionTriggersOnce, string category);
+        [Static]
+        [Export("setLocalNotification:alertBody:badge:alertAction:identifierKey:userInfo:soundName:region:regionTriggersOnce:category:")]
+        UILocalNotification SetLocalNotification(NSDate fireDate, string alertBody, int badge, string alertAction, string notificationKey, NSDictionary userInfo, string soundName, CLRegion region, bool regionTriggersOnce, string category);
 
         // +(void)showLocalNotificationAtFront:(UILocalNotification *)notification identifierKey:(NSString *)notificationKey __attribute__((deprecated("JPush 2.1.9 版本已过期")));
         [Static]
@@ -383,7 +440,6 @@ namespace JPush
         // +(NSString *)registrationID;
         [Static]
         [Export("registrationID")]
-
         string RegistrationID { get; }
 
         // +(void)registrationIDCompletionHandler:(void (^)(int, NSString *))completionHandler;
@@ -402,14 +458,14 @@ namespace JPush
         void SetLogOFF();
 
         // +(void)setTags:(NSSet *)tags alias:(NSString *)alias callbackSelector:(SEL)cbSelector target:(id)theTarget __attribute__((deprecated("JPush 2.1.1 版本已过期")));
-        //[Static]
-        //[Export("setTags:alias:callbackSelector:target:")]
-        //void SetTags(NSSet tags, string alias, Selector cbSelector, NSObject theTarget);
+        [Static]
+        [Export("setTags:alias:callbackSelector:target:")]
+        void SetTagsWithTarget(NSSet tags, string alias, Selector cbSelector, NSObject theTarget);
 
         // +(void)setTags:(NSSet *)tags alias:(NSString *)alias callbackSelector:(SEL)cbSelector object:(id)theTarget __attribute__((deprecated("JPush 3.0.6 版本已过期")));
         [Static]
         [Export("setTags:alias:callbackSelector:object:")]
-        void SetTags(NSSet tags, string alias, Selector cbSelector, NSObject theTarget);
+        void SetTagsWithObject(NSSet tags, string alias, Selector cbSelector, NSObject theObject);
 
         // +(void)setTags:(NSSet *)tags callbackSelector:(SEL)cbSelector object:(id)theTarget __attribute__((deprecated("JPush 3.0.6 版本已过期")));
         [Static]
@@ -446,5 +502,31 @@ namespace JPush
         [Abstract]
         [Export("jpushNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:")]
         void DidReceiveNotificationResponse(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler);
+
+        // @required -(void)jpushNotificationCenter:(UNUserNotificationCenter *)center openSettingsForNotification:(UNNotification * _Nullable)notification __attribute__((availability(ios, introduced=12.0)));
+        [iOS(12, 0)]
+        [Abstract]
+        [Export("jpushNotificationCenter:openSettingsForNotification:")]
+        void OpenSettingsForNotification(UNUserNotificationCenter center, [NullAllowed] UNNotification notification);
     }
+
+    // @interface JPushNotificationExtensionService : NSObject
+    //[BaseType(typeof(NSObject))]
+    //interface JPushNotificationExtensionService
+    //{
+    //    // +(void)jpushSetAppkey:(NSString *)appkey;
+    //    [Static]
+    //    [Export("jpushSetAppkey:")]
+    //    void JpushSetAppkey(string appkey);
+
+    //    // +(void)jpushReceiveNotificationRequest:(UNNotificationRequest *)request with:(void (^)(void))completion;
+    //    [Static]
+    //    [Export("jpushReceiveNotificationRequest:with:")]
+    //    void JpushReceiveNotificationRequest(UNNotificationRequest request, Action completion);
+
+    //    // +(void)setLogOff;
+    //    [Static]
+    //    [Export("setLogOff")]
+    //    void SetLogOff();
+    //}
 }
