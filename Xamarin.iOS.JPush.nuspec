@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata minClientVersion="">
+    <id>Xamarin.iOS.JPush</id>
+    <version>3.1.1</version>
+    <title>Funky - JPush</title>
+    <authors>WenfengCheng</authors>
+    <owners>WenfengCheng, Funky_Xamarin</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/Wenfengcheng/JPush_Xamarin.iOS_Binding</projectUrl>
+    <description>Xamarin.iOS.JPush</description>
+    <summary>Xamarin.iOS Binding Library - JPush</summary>
+    <releaseNotes>Release JPush 3.1.1</releaseNotes>
+    <copyright></copyright>
+    <language>en</language>
+    <tags>Xamarin.iOS,  Xamarin, JPush, APNS, Notification</tags>
+    <dependencies>
+      <group targetFramework="Xamarin.iOS1.0" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" targetFramework="Xamarin.iOS1.0" />
+      <frameworkAssembly assemblyName="Xamarin.iOS" targetFramework="Xamarin.iOS1.0" />
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+    <file src="/Users/highview/Desktop/PersionGit/JPush/JPush_Xamarin/JPush_Xamarin/bin/Release/JPush_Xamarin.dll" target="lib/xamarinios10/JPush_Xamarin.dll" />
+  </files>
+</package>
