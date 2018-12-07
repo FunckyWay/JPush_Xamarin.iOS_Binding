@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JPush_Xamarin", "JPush_Xamarin\JPush_Xamarin.csproj", "{ADC8B7AF-F2F5-486F-B528-2745D526A06C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csproj", "{A1F4D111-7A90-4544-B40F-3A05BDA85B54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,5 +27,17 @@ Global
 		{ADC8B7AF-F2F5-486F-B528-2745D526A06C}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{ADC8B7AF-F2F5-486F-B528-2745D526A06C}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{ADC8B7AF-F2F5-486F-B528-2745D526A06C}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{A1F4D111-7A90-4544-B40F-3A05BDA85B54}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{A1F4D111-7A90-4544-B40F-3A05BDA85B54}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
+		{A1F4D111-7A90-4544-B40F-3A05BDA85B54}.Release|Any CPU.ActiveCfg = Release|iPhone
+		{A1F4D111-7A90-4544-B40F-3A05BDA85B54}.Release|Any CPU.Build.0 = Release|iPhone
+		{A1F4D111-7A90-4544-B40F-3A05BDA85B54}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{A1F4D111-7A90-4544-B40F-3A05BDA85B54}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{A1F4D111-7A90-4544-B40F-3A05BDA85B54}.Release|iPhone.ActiveCfg = Release|iPhone
+		{A1F4D111-7A90-4544-B40F-3A05BDA85B54}.Release|iPhone.Build.0 = Release|iPhone
+		{A1F4D111-7A90-4544-B40F-3A05BDA85B54}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{A1F4D111-7A90-4544-B40F-3A05BDA85B54}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{A1F4D111-7A90-4544-B40F-3A05BDA85B54}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{A1F4D111-7A90-4544-B40F-3A05BDA85B54}.Debug|iPhone.Build.0 = Debug|iPhone
 	EndGlobalSection
 EndGlobal

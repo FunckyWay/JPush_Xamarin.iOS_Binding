@@ -7,12 +7,12 @@ namespace JPush
     public enum JPAuthorizationOptions : ulong
     {
         None = 0,
-        Badge = (1 << 0),
-        Sound = (1 << 1),
-        Alert = (1 << 2),
-        CarPlay = (1 << 3),
-        CriticalAlert = (1 << 4),
-        ProvidesAppNotificationSettings = (1 << 5),
-        Provisional = (1 << 6)
+        Badge = 1,
+        Sound = 2,
+        Alert = 4,
+        CarPlay = 8,
+        CriticalAlert = 16,
+        ProvidesAppNotificationSettings = 32,
+        Provisional = 64
     }
 }
