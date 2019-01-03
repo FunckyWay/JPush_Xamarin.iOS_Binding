@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.props" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -9,6 +10,19 @@
     <RootNamespace>JPush_Xamarin</RootNamespace>
     <AssemblyName>JPush_Xamarin</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <PackOnBuild>true</PackOnBuild>
+    <PackageId>Xamarin.iOS.JPush</PackageId>
+    <PackageVersion>3.1.1</PackageVersion>
+    <Authors>WenfengCheng</Authors>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <Owners>WenfengCheng, Funky_Xamarin</Owners>
+    <PackageProjectUrl>https://github.com/Wenfengcheng/JPush_Xamarin.iOS_Binding</PackageProjectUrl>
+    <PackageReleaseNotes>Release JPush 3.1.1</PackageReleaseNotes>
+    <Summary>Xamarin.iOS Binding Library - JPush</Summary>
+    <PackageTags>Xamarin.iOS,  Xamarin, JPush, APNS, Notification</PackageTags>
+    <Title>Funky - JPush</Title>
+    <Description>Xamarin.iOS.JPush</Description>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,5 +67,9 @@
       <ForceLoad>True</ForceLoad>
     </NativeReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
+  <Import Project="..\packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.targets" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.targets')" />
 </Project>
